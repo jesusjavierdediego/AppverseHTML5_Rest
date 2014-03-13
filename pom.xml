@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.thecodersbreakfast</groupId>
-    <artifactId>restangular</artifactId>
+    <groupId>com.rest</groupId>
+    <artifactId>restclientdemo</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>JaxRS + Angular</name>
+    <name>AppverseHTML5_Rest</name>
 
     <!-- ================================================================================ -->
     <!-- Common properties -->
@@ -71,7 +71,7 @@
                                     <mainClass>com.rest.server.rest.application.RestComponent</mainClass>
                                 </transformer>
                             </transformers>
-                            <finalName>restangular-${project.version}</finalName>
+                            <finalName>restclientdemo-${project.version}</finalName>
                         </configuration>
                     </execution>
                 </executions>

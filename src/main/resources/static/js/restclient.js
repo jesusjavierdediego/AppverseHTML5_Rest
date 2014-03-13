@@ -1,4 +1,4 @@
-var app = angular.module('restangular.app', ['ngResource']);
+var app = angular.module('restclient.app', ['ngResource']);
 
 // ============================== APPLICATION ==============================
 

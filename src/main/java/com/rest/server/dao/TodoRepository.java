@@ -18,7 +18,7 @@ public class TodoRepository {
     static {
         INSTANCE.create(new Todo(1L, "Learn AngularJS", "HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop. "));
         INSTANCE.create(new Todo(2L, "Use Twitter Bootstrap", "Sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development."));
-        INSTANCE.create(new Todo(3L, "Integrate with Restlet", "The leading web API framework for Java"));
+        INSTANCE.create(new Todo(3L, "Integrate with Restlet", "An alternative REST API framework for Java"));
     }
 
     public static TodoRepository getInstance() {

@@ -1,8 +1,8 @@
 package com.rest.server.rest.application;
 
-import com.rest.restangular.server.rest.resource.StaticResource;
-import com.rest.restangular.server.rest.resource.TodoListResource;
-import com.rest.restangular.server.rest.resource.TodoResource;
+import com.rest.restclient.server.rest.resource.StaticResource;
+import com.rest.restclient.server.rest.resource.TodoListResource;
+import com.rest.restclient.server.rest.resource.TodoResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

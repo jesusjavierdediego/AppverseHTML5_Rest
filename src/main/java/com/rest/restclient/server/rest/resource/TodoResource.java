@@ -1,4 +1,4 @@
-package com.rest.restangular.server.rest.resource;
+package com.rest.restclient.server.rest.resource;
 
 import com.rest.server.dao.TodoRepository;
 import com.rest.server.model.Todo;

@@ -1,4 +1,4 @@
-package com.rest.restangular.server.rest.resource;
+package com.rest.restclient.server.rest.resource;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
