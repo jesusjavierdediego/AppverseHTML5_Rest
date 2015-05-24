@@ -6,7 +6,7 @@
     <artifactId>restclientdemo</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>AppverseHTML5_Rest</name>
+    <name>RestServer</name>
 
     <!-- ================================================================================ -->
     <!-- Common properties -->
@@ -17,6 +17,8 @@
         <project.build.javaVersion>1.7</project.build.javaVersion>
         <!-- Dependencies -->
         <version.lib.jersey>1.17.1</version.lib.jersey>
+        
+        <outputPath>/opt/apps/deployments/</outputPath>
     </properties>
 
     <!-- ================================================================================ -->
@@ -71,11 +73,70 @@
                                     <mainClass>com.rest.server.rest.application.RestComponent</mainClass>
                                 </transformer>
                             </transformers>
-                            <finalName>restclientdemo-${project.version}</finalName>
+                            <finalName>RestServer</finalName>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jolokia</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>0.11.4</version>
+                        <configuration>
+                            <images>
+                                <image>
+                                    <!-- Image name and alias-->
+                                    <alias>BlackSniper</alias>
+                                    <name>RestServer</name>
+                                    <!-- Defines how the image is created. Base image, 
+                                    build artifacts and their dependencies, ports to be exposed, 
+                                    etc to be included in the image are specified here-->
+                                    <build>
+                                        <from>jdediego/linuxjava8:0.1</from>
+                                        <!-- Used to specify the artifacts to be included-->
+                                        <assembly>
+                                            <descriptor>assembly.xml</descriptor>
+                                            <basedir>/</basedir>
+                                        </assembly>
+                                        <ports>
+                                            <port>8000</port>
+                                        </ports>
+                                        <command>java -jar /opt/apps/deployments/RestServer.jar</command>
+                                    </build>
+                                    <run>
+                                        <ports>
+                                            <port>8000:8000</port>
+                                        </ports>
+                                    </run>
+                                </image>
+                            </images>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>docker:build</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>docker:start</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
