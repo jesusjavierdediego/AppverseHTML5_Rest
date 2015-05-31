@@ -29,7 +29,8 @@ public class RestComponent extends AbstractIdleService {
     protected void startUp() throws Exception {
         httpServer.start();
         System.out.println("Server started on port " + PORT + ".");
-        System.out.println("Application is now available on http://localhost:" + PORT + "/web/index.html");
+        System.out.println("Application is now available on port " + PORT + ", path: /web/index.html");
+        System.out.println("Application REST service accessible on port: " + PORT + ", path: /rest/todos/{todoId}");
     }
 
     @Override

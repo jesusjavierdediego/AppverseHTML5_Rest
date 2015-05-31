@@ -5,13 +5,11 @@
     <dependencySets>
         <dependencySet>
             <includes>
-<!--                <include>com.rest:RestServer</include>-->
                 <include>${project.groupId}:${project.artifactId}</include>
             </includes>
-<!--            <outputDirectory>/opt/apps/deployments/</outputDirectory>-->
-            <outputPath>${outputPath}</outputPath>
-<!--            <outputFileNameMapping>RestServer.jar</outputFileNameMapping>-->
-            <outputFileNameMapping>${project.build.finalName}.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>${outputPath}</outputDirectory>
+<!--            <outputFileNameMapping>${serviceAlias}.${project.packaging}</outputFileNameMapping>-->
+<outputFileNameMapping>restdemo.jar</outputFileNameMapping>
         </dependencySet>
     </dependencySets>
 </assembly>

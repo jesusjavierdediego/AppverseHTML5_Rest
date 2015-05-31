@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rest</groupId>
-    <artifactId>restclientdemo</artifactId>
+    <artifactId>restserver</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>RestServer</name>
@@ -19,6 +19,7 @@
         <version.lib.jersey>1.17.1</version.lib.jersey>
         
         <outputPath>/opt/apps/deployments/</outputPath>
+        <serviceAlias>blacksniper</serviceAlias>
     </properties>
 
     <!-- ================================================================================ -->
@@ -60,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -73,7 +74,9 @@
                                     <mainClass>com.rest.server.rest.application.RestComponent</mainClass>
                                 </transformer>
                             </transformers>
-                            <finalName>RestServer</finalName>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>${serviceAlias}</shadedClassifierName>
+                            <finalName>restdemo</finalName>
                         </configuration>
                     </execution>
                 </executions>
@@ -94,12 +97,12 @@
                                 <image>
                                     <!-- Image name and alias-->
                                     <alias>BlackSniper</alias>
-                                    <name>RestServer</name>
+                                    <name>restserver</name>
                                     <!-- Defines how the image is created. Base image, 
                                     build artifacts and their dependencies, ports to be exposed, 
                                     etc to be included in the image are specified here-->
                                     <build>
-                                        <from>jdediego/linuxjava8:0.1</from>
+                                        <from>ingensi/oracle-jdk:centos6-8u45</from>
                                         <!-- Used to specify the artifacts to be included-->
                                         <assembly>
                                             <descriptor>assembly.xml</descriptor>
@@ -108,7 +111,7 @@
                                         <ports>
                                             <port>8000</port>
                                         </ports>
-                                        <command>java -jar /opt/apps/deployments/RestServer.jar</command>
+                                        <command>java -jar /opt/apps/deployments/restdemo.jar</command>
                                     </build>
                                     <run>
                                         <ports>
