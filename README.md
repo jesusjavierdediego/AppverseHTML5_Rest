@@ -1,4 +1,4 @@
 AppverseHTML5_Rest
 ==================
 
-Java backend application for rest access
+Java application as rest server for AngularJS embedded UI
